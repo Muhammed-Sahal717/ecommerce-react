@@ -69,73 +69,73 @@ function Navbar() {
       <AppBar position="sticky">
         <Container maxWidth="lg">
           <Toolbar disableGutters>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
 
-          {/* Desktop Brand */}
-          <Typography
-            variant="h6"
-            component={RouterLink}
-            to="/"
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-              textDecoration: "none",
-              color: "inherit",
-              fontWeight: "bold",
-            }}
-          >
-            FoodApp
-          </Typography>
+            {/* Desktop Brand */}
+            <Typography
+              variant="h6"
+              component={RouterLink}
+              to="/"
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "block" },
+                textDecoration: "none",
+                color: "inherit",
+                fontWeight: "bold",
+              }}
+            >
+              FoodApp
+            </Typography>
 
-          {/* Desktop Navigation Links */}
-          <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
-            {navItems.map((item) => (
-              <Button
-                key={item.label}
+            {/* Desktop Navigation Links */}
+            <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item.label}
+                  component={RouterLink}
+                  to={item.path}
+                  sx={{ color: "#fff" }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Box>
+
+            {/* Spacer for Mobile layout where Brand is hidden */}
+            <Box sx={{ flexGrow: { xs: 1, sm: 0 } }} />
+
+            {/* Icons (always visible) */}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <IconButton
                 component={RouterLink}
-                to={item.path}
-                sx={{ color: "#fff" }}
+                to="/wishlist"
+                color="inherit"
+                aria-label="wishlist"
               >
-                {item.label}
-              </Button>
-            ))}
-          </Box>
+                <Badge badgeContent={wishlistCount} color="secondary">
+                  <FavoriteIcon />
+                </Badge>
+              </IconButton>
 
-          {/* Spacer for Mobile layout where Brand is hidden */}
-          <Box sx={{ flexGrow: { xs: 1, sm: 0 } }} />
-
-          {/* Icons (always visible) */}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton
-              component={RouterLink}
-              to="/wishlist"
-              color="inherit"
-              aria-label="wishlist"
-            >
-              <Badge badgeContent={wishlistCount} color="secondary">
-                <FavoriteIcon />
-              </Badge>
-            </IconButton>
-
-            <IconButton
-              component={RouterLink}
-              to="/cart"
-              color="inherit"
-              aria-label="cart"
-            >
-              <Badge badgeContent={totalCartQuantity} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-          </Box>
+              <IconButton
+                component={RouterLink}
+                to="/cart"
+                color="inherit"
+                aria-label="cart"
+              >
+                <Badge badgeContent={totalCartQuantity} color="secondary">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
