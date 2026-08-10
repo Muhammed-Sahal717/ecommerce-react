@@ -61,3 +61,184 @@
 | **Material UI Components** | Buttons, Cards, TextFields, Selects, Dialogs, AppBar, Drawer, Grid, etc.     |
 | **Material UI Theme**      | Global colors, typography, spacing, and component styling                    |
 | **Reusable Components**    | Consistent UI across all pages                                               |
+
+## Pages & Routes
+
+| Page            | Route            | Purpose                                        |
+| --------------- | ---------------- | ---------------------------------------------- |
+| Home            | `/`              | Hero, categories, featured products            |
+| Products        | `/products`      | All products, search, category & price filters |
+| Product Details | `/products/:id`  | Individual product information                 |
+| Cart            | `/cart`          | Cart items, quantity, remove, totals           |
+| Wishlist        | `/wishlist`      | Saved products                                 |
+| Checkout        | `/checkout`      | Customer details + order summary               |
+| Order Success   | `/order-success` | Order confirmation                             |
+
+---
+
+## Components Structure
+
+```
+components/
+├── Navbar
+├── Footer
+├── ProductCard
+├── ProductGrid
+├── CategoryCard
+├── SearchBar
+├── PriceFilter
+├── CategoryFilter
+├── CartItem
+├── CartSummary
+├── WishlistItem
+├── CheckoutForm
+├── OrderSummary
+└── EmptyState
+```
+
+## Redux Structure
+
+```
+
+redux/
+├── store.js
+└── slices/
+├── cartSlice.js
+└── wishlistSlice.js
+```
+
+## Redux Structure
+
+```
+
+redux/
+├── store.js
+└── slices/
+├── cartSlice.js
+└── wishlistSlice.js
+
+```
+
+### Cart Slice
+
+- `addToCart()`
+- `removeFromCart()`
+- `increaseQuantity()`
+- `decreaseQuantity()`
+- `clearCart()`
+
+### Wishlist Slice
+
+- `addToWishlist()`
+- `removeFromWishlist()`
+- `toggleWishlist()`
+- `clearWishlist()`
+
+---
+
+## Hooks
+
+```
+
+hooks/
+├── useLocalStorage.js
+└── useProducts.js
+
+```
+
+### Built-in Hooks Used
+
+- `useState`
+- `useEffect`
+- `useMemo`
+- `useCallback`
+
+## Data
+
+```
+data/
+└── products.js
+```
+
+### Product Structure
+
+```javascript
+{
+  id: 1,
+  name: "Wireless Headphones",
+  category: "Electronics",
+  price: 2999,
+  image: "...",
+  description: "...",
+  rating: 4.5
+}
+```
+
+---
+
+## Utils
+
+```
+utils/
+└── storage.js
+```
+
+For simple localStorage helper functions.
+
+---
+
+## Final Folder Structure
+
+```
+src/
+├── assets/
+│   └── images/
+│
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── ProductCard.jsx
+│   ├── ProductGrid.jsx
+│   ├── CategoryCard.jsx
+│   ├── SearchBar.jsx
+│   ├── PriceFilter.jsx
+│   ├── CategoryFilter.jsx
+│   ├── CartItem.jsx
+│   ├── CartSummary.jsx
+│   ├── WishlistItem.jsx
+│   ├── CheckoutForm.jsx
+│   ├── OrderSummary.jsx
+│   └── EmptyState.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Products.jsx
+│   ├── ProductDetails.jsx
+│   ├── Cart.jsx
+│   ├── Wishlist.jsx
+│   ├── Checkout.jsx
+│   └── OrderSuccess.jsx
+│
+├── redux/
+│   ├── store.js
+│   └── slices/
+│       ├── cartSlice.js
+│       └── wishlistSlice.js
+│
+├── hooks/
+│   ├── useLocalStorage.js
+│   └── useProducts.js
+│
+├── data/
+│   └── products.js
+│
+├── utils/
+│   └── storage.js
+│
+├── theme/
+│   └── theme.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
