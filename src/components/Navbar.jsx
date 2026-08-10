@@ -14,6 +14,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Container,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -66,7 +67,8 @@ function Navbar() {
   return (
     <>
       <AppBar position="sticky">
-        <Toolbar>
+        <Container maxWidth="lg">
+          <Toolbar disableGutters>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -134,7 +136,8 @@ function Navbar() {
               </Badge>
             </IconButton>
           </Box>
-        </Toolbar>
+          </Toolbar>
+        </Container>
       </AppBar>
 
       {/* Mobile Drawer */}
