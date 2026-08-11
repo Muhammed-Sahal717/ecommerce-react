@@ -1,16 +1,23 @@
 import { useState } from "react";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box, Grid } from "@mui/material";
 import ProductGrid from "../components/ProductGrid";
 import SearchBar from "../components/SearchBar";
+import CategoryFilter from "../components/CategoryFilter";
 import products from "../data/products";
 
 function Products() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [category, setCategory] = useState("All");
 
-  // Filter products based on search query (case-insensitive partial match)
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  // Filter products based on search query AND category
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesCategory = category === "All" || product.category === category;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
@@ -34,12 +41,22 @@ function Products() {
         </Typography>
       </Box>
 
-      {/* Search Bar Section */}
-      <Box sx={{ mb: 4, maxWidth: 600, mx: "auto" }}>
-        <SearchBar
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+      {/* Filters Section */}
+      <Box sx={{ mb: 4, maxWidth: 800, mx: "auto" }}>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, sm: 8 }}>
+            <SearchBar
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 4 }}>
+            <CategoryFilter
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            />
+          </Grid>
+        </Grid>
       </Box>
 
       {/* Product Grid */}
