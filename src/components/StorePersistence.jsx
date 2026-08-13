@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCart } from '../redux/slices/cartSlice';
 import { setWishlist } from '../redux/slices/wishlistSlice';
@@ -9,7 +9,8 @@ function StorePersistence() {
   const cartItems = useSelector((state) => state.cart.items);
   const wishlistItems = useSelector((state) => state.wishlist.items);
   
-  const isInitialLoad = useRef(true);
+  // Clear hydration state flag
+  const [isHydrated, setIsHydrated] = useState(false);
 
   // 1. On Mount: Read from localStorage and initialize Redux state
   useEffect(() => {
@@ -31,14 +32,16 @@ function StorePersistence() {
       }
     } catch (error) {
       console.error('Failed to parse localStorage data:', error);
+    } finally {
+      // Hydration complete
+      setIsHydrated(true);
     }
   }, [dispatch]);
 
   // 2. On Change: Save Redux state to localStorage
   useEffect(() => {
-    if (isInitialLoad.current) {
-      // Prevent overwriting localStorage with the initial empty Redux state
-      isInitialLoad.current = false;
+    // Do NOT save anything to localStorage until hydration is complete
+    if (!isHydrated) {
       return;
     }
     
@@ -48,9 +51,9 @@ function StorePersistence() {
     } catch (error) {
       console.error('Failed to save to localStorage:', error);
     }
-  }, [cartItems, wishlistItems]);
+  }, [cartItems, wishlistItems, isHydrated]);
 
-  return null; // This component handles side-effects only
+  return null;
 }
 
 export default StorePersistence;
