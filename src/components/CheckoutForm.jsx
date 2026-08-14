@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Box, Button, TextField, Grid, Paper } from "@mui/material";
 
 function CheckoutForm() {
   const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.items);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -74,7 +76,12 @@ function CheckoutForm() {
     e.preventDefault();
 
     if (validate()) {
-      navigate("/order-success");
+      navigate("/order-success", {
+        state: {
+          customer: formData,
+          items: cartItems,
+        },
+      });
     }
   };
 
