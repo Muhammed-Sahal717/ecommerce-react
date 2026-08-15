@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Container, Typography, Box, Grid } from "@mui/material";
 import ProductGrid from "../components/ProductGrid";
 import SearchBar from "../components/SearchBar";
@@ -7,8 +8,11 @@ import PriceFilter from "../components/PriceFilter";
 import products from "../data/products";
 
 function Products() {
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category") || "All";
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState(initialCategory);
   const [priceRange, setPriceRange] = useState("all");
 
   // Filter products based on search query, category, AND price range
