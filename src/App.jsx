@@ -11,13 +11,13 @@ import OrderSuccess from "./pages/OrderSuccess";
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import StorePersistence from './components/StorePersistence';
+import SaveData from "./components/SaveData";
 import { Box } from '@mui/material';
 
 function App() {
   return (
     <Router>
-      <StorePersistence />
+      <SaveData />
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
         <Box component="main" sx={{ flexGrow: 1 }}>
