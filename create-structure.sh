@@ -21,6 +21,7 @@ touch src/components/CartSummary.jsx
 touch src/components/WishlistItem.jsx
 touch src/components/CheckoutForm.jsx
 touch src/components/OrderSummary.jsx
+touch src/components/SaveData.jsx
 touch src/components/EmptyState.jsx
 
 # Create pages and all page files
@@ -39,18 +40,9 @@ touch src/redux/store.js
 touch src/redux/slices/cartSlice.js
 touch src/redux/slices/wishlistSlice.js
 
-# Create hooks
-mkdir -p src/hooks
-touch src/hooks/useLocalStorage.js
-touch src/hooks/useProducts.js
-
 # Create data
 mkdir -p src/data
 touch src/data/products.js
-
-# Create utils
-mkdir -p src/utils
-touch src/utils/storage.js
 
 # Create theme
 mkdir -p src/theme
@@ -58,6 +50,7 @@ touch src/theme/theme.js
 
 # Create root files
 touch src/App.jsx
+touch src/App.css
 touch src/main.jsx
 touch src/index.css
 

@@ -14,7 +14,7 @@
 12. ❤️ **Wishlist**
 13. 📝 **Checkout Form**
 14. 📦 **Order Summary**
-15. 💾 **Store Cart & Wishlist using localStorage**
+15. 💾 **Store Cart & Wishlist using localStorage (SaveData)**
 
 ## Core Tech Stack
 
@@ -93,30 +93,18 @@ components/
 ├── WishlistItem
 ├── CheckoutForm
 ├── OrderSummary
+├── SaveData
 └── EmptyState
 ```
 
 ## Redux Structure
 
 ```
-
 redux/
 ├── store.js
 └── slices/
-├── cartSlice.js
-└── wishlistSlice.js
-```
-
-## Redux Structure
-
-```
-
-redux/
-├── store.js
-└── slices/
-├── cartSlice.js
-└── wishlistSlice.js
-
+    ├── cartSlice.js
+    └── wishlistSlice.js
 ```
 
 ### Cart Slice
@@ -126,6 +114,7 @@ redux/
 - `increaseQuantity()`
 - `decreaseQuantity()`
 - `clearCart()`
+- `setCart()`
 
 ### Wishlist Slice
 
@@ -133,25 +122,10 @@ redux/
 - `removeFromWishlist()`
 - `toggleWishlist()`
 - `clearWishlist()`
+- `setWishlist()`
 
 ---
 
-## Hooks
-
-```
-
-hooks/
-├── useLocalStorage.js
-└── useProducts.js
-
-```
-
-### Built-in Hooks Used
-
-- `useState`
-- `useEffect`
-- `useMemo`
-- `useCallback`
 
 ## Data
 
@@ -165,25 +139,16 @@ data/
 ```javascript
 {
   id: 1,
-  name: "Wireless Headphones",
-  category: "Electronics",
-  price: 2999,
+  name: "Classic Double burger",
+  category: "Burgers",
+  price: 299,
   image: "...",
   description: "...",
-  rating: 4.5
+  rating: 4.8
 }
 ```
 
----
 
-## Utils
-
-```
-utils/
-└── storage.js
-```
-
-For simple localStorage helper functions.
 
 ---
 
@@ -208,6 +173,7 @@ src/
 │   ├── WishlistItem.jsx
 │   ├── CheckoutForm.jsx
 │   ├── OrderSummary.jsx
+│   ├── SaveData.jsx
 │   └── EmptyState.jsx
 │
 ├── pages/
@@ -232,13 +198,11 @@ src/
 ├── data/
 │   └── products.js
 │
-├── utils/
-│   └── storage.js
-│
 ├── theme/
 │   └── theme.js
 │
 ├── App.jsx
+├── App.css
 ├── main.jsx
 └── index.css
 ```
