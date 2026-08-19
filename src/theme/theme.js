@@ -3,13 +3,13 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#e65100", // A warm, appetizing orange
+      main: "#e65100",
       light: "#ff833a",
       dark: "#ac1900",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#43a047", // A fresh green
+      main: "#43a047",
       light: "#76d275",
       dark: "#00701a",
       contrastText: "#ffffff",
@@ -36,7 +36,7 @@ const theme = createTheme({
     },
     button: {
       fontWeight: 600,
-      textTransform: "none", // Modern apps often avoid all-caps buttons
+      textTransform: "none",
     },
   },
   shape: {
